@@ -10,6 +10,9 @@
 - Year valid thru (current year up to 15)
 - Is a Credit Card valid from this regular expressions: https://www.regular-expressions.info/creditcard.html
 
+## Credit card type support with return icons
+Master Card | Visa | American Express | Discover | JCB
+
 ## More
 I got inspired from here:
 https://dribbble.com/shots/6440077-Add-a-New-Credit-Card-alternate-flow
