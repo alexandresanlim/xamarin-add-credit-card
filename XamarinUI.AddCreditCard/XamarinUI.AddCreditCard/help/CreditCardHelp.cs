@@ -12,7 +12,12 @@ namespace XamarinUI.AddCreditCard.help
             Undefined, MasterCard, Visa, AmericanExpress, Discover, JCB
         };
 
-        public static CardType ValidatedCard(this string cardNumber)
+        public static bool IsACreditCardValid(this string cardNumber)
+        {
+            return cardNumber.GetCardTypeFromRegularExpression() != CardType.Undefined;
+        }
+
+        public static CardType GetCardTypeFromRegularExpression(this string cardNumber)
         {
             //https://www.regular-expressions.info/creditcard.html
             if (Regex.Match(cardNumber, @"^4[0-9]{12}(?:[0-9]{3})?$").Success)

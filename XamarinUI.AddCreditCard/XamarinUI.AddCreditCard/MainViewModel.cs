@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using XamarinUI.AddCreditCard.extention;
+using XamarinUI.AddCreditCard.help;
 
 namespace XamarinUI.AddCreditCard
 {
@@ -132,7 +133,7 @@ namespace XamarinUI.AddCreditCard
         {
             Number.ErrorMsg.IsVisible = false;
 
-            if (string.IsNullOrEmpty(Number?.Entry?.Text) || !Number.Entry.Text.Length.Equals(19))
+            if (string.IsNullOrEmpty(Number?.Entry?.Text) || !Number.Entry.Text.Length.Equals(19) || !Number.Entry.Text.IsACreditCardValid())
             {
                 Number.ErrorMsg.Text = "Invalid credit card number";
                 Number.ErrorMsg.IsVisible = true;
