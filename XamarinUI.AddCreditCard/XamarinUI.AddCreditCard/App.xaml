@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XamarinUI.AddCreditCard.App">
+    <Application.Resources>
+        <Color x:Key="primary">#9C27B0</Color>
+        <Color x:Key="primary_dark">#7B1FA2</Color>
+        <Color x:Key="primary_light">#E1BEE7</Color>
+        <Color x:Key="accent">#7C4DFF</Color>
+        <Color x:Key="primary_text">#212121</Color>
+        <Color x:Key="secondary_text">#757575</Color>
+        <Color x:Key="icons">#FFFFFF</Color>
+        <Color x:Key="divider">#BDBDBD</Color>
+        <Color x:Key="background_page">#ecf0f1</Color>
+        <Color x:Key="placeholder_value">#ecf0f1</Color>
+
+        <!--<Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="{StaticResource accent}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>-->
+
+
+    </Application.Resources>
+</Application>
