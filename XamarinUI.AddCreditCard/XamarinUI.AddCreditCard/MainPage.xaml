@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:XamarinUI.AddCreditCard"
              xmlns:behavior="clr-namespace:XamarinUI.AddCreditCard.behavior"
              xmlns:flipper="clr-namespace:XamarinUI.AddCreditCard.extention"
+             xmlns:controls="clr-namespace:XamarinUI.AddCreditCard.controls"
              mc:Ignorable="d"
              x:Class="XamarinUI.AddCreditCard.MainPage">
 
@@ -24,7 +25,7 @@
                 </Grid.RowDefinitions>
 
                 <StackLayout Grid.Row="0">
-                    <Frame CornerRadius="50" HorizontalOptions="End" WidthRequest="150" Padding="10" BackgroundColor="#ecf0f1">
+                    <Frame CornerRadius="30" HorizontalOptions="End" WidthRequest="150" Padding="10" BackgroundColor="White" HasShadow="False">
                         <Label Text="Scan your card 📷" FontAttributes="Bold" HorizontalOptions="Center" TextColor="{StaticResource primary_text}"/>
                     </Frame>
                 </StackLayout>
@@ -34,7 +35,7 @@
 
                     <flipper:ViewFlipper.FrontView>
                         <!--FrontCard-->
-                        <Frame CornerRadius="20" BackgroundColor="{StaticResource accent}" HeightRequest="240" Padding="0">
+                        <controls:CustomCard HeightRequest="240" Padding="0">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
@@ -44,7 +45,7 @@
                                 <Image x:Name="imgLogoCard" Grid.Row="0" Margin="0,15,15,0" WidthRequest="70" HorizontalOptions="EndAndExpand" Source="{Binding LogoCreditCard.Source}" PropertyChanged="Image_PropertyChanged"/>
 
                                 <StackLayout Grid.Row="1">
-                                    <Frame Padding="10" Margin="5,15" BorderColor="{Binding Number.BorderSpot.BorderColor}" BackgroundColor="Transparent" CornerRadius="15">
+                                    <Frame Padding="10" Margin="5,15" BorderColor="{Binding Number.BorderSpot.BorderColor}" BackgroundColor="Transparent" CornerRadius="15" HasShadow="False">
                                         <Label x:Name="lbNumberValue" Text="XXXX XXXX XXXX XXXX" FontSize="Title" TextColor="{StaticResource placeholder_value}"/>
                                     </Frame>
                                     <Grid ColumnSpacing="0">
@@ -56,7 +57,7 @@
                                         <!--Name-->
                                         <StackLayout Grid.Column="0" Spacing="0">
                                             <Label Margin="15,0,0,0" Text="CARD HOLDER NAME" TextColor="{StaticResource icons}" FontSize="Micro" FontAttributes="Bold"/>
-                                            <Frame Padding="10" Margin="5,0,0,15" BorderColor="{Binding Name.BorderSpot.BorderColor}" BackgroundColor="Transparent" CornerRadius="15">
+                                            <Frame Padding="10" Margin="5,0,0,15" BorderColor="{Binding Name.BorderSpot.BorderColor}" BackgroundColor="Transparent" CornerRadius="15" HasShadow="False">
                                                 <Label x:Name="lbNameValue" Text="NAME SURNAME" FontSize="Medium" TextColor="{StaticResource placeholder_value}"/>
                                             </Frame>
                                         </StackLayout>
@@ -64,7 +65,7 @@
                                         <!--Validated-->
                                         <StackLayout Grid.Column="1" Spacing="0">
                                             <Label Margin="0,0,15,0" Text="VALID THRU" TextColor="{StaticResource icons}" HorizontalOptions="End" FontSize="Micro" FontAttributes="Bold"/>
-                                            <Frame Padding="10" Margin="0,0,5,15" BorderColor="{Binding Valid.BorderSpot.BorderColor}" BackgroundColor="Transparent" CornerRadius="15">
+                                            <Frame Padding="10" Margin="0,0,5,15" BorderColor="{Binding Valid.BorderSpot.BorderColor}" BackgroundColor="Transparent" CornerRadius="15" HasShadow="False">
                                                 <Label x:Name="lbValidValue" Text="MM/YY" FontSize="Medium" TextColor="{StaticResource placeholder_value}" HorizontalOptions="End"/>
                                             </Frame>
                                         </StackLayout>
@@ -73,11 +74,11 @@
 
                             </Grid>
 
-                        </Frame>
+                        </controls:CustomCard>
                     </flipper:ViewFlipper.FrontView>
                     <flipper:ViewFlipper.BackView>
                         <!--BackCard-->
-                        <Frame CornerRadius="20" BackgroundColor="{StaticResource accent}" HeightRequest="200" Padding="0,20">
+                        <controls:CustomCard HeightRequest="200" Padding="0,20">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
@@ -92,7 +93,7 @@
                                             <ColumnDefinition Width="0.5*"/>
                                         </Grid.ColumnDefinitions>
                                         <Label Grid.Column="0" Margin="15,0,0,0" Text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" MaxLines="3" TextColor="{StaticResource icons}"/>
-                                        <Frame Grid.Column="1" Padding="10" BorderColor="{Binding Cvv.BorderSpot.BorderColor}" BackgroundColor="Transparent" CornerRadius="15" Margin="0,0,40,0">
+                                        <Frame Grid.Column="1" Padding="10" BorderColor="{Binding Cvv.BorderSpot.BorderColor}" BackgroundColor="Transparent" CornerRadius="15" Margin="0,0,40,0" HasShadow="False">
                                             <StackLayout Padding="10" BackgroundColor="WhiteSmoke">
                                                 <Label x:Name="lbCvvValue" Text="CVV" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                                             </StackLayout>
@@ -103,7 +104,7 @@
 
                             </Grid>
 
-                        </Frame>
+                        </controls:CustomCard>
                     </flipper:ViewFlipper.BackView>
                 </flipper:ViewFlipper>
 
@@ -146,7 +147,7 @@
                         <Label IsVisible="{Binding Cvv.ErrorMsg.IsVisible}" Text="{Binding Cvv.ErrorMsg.Text}" TextColor="Red"/>
                     </StackLayout>
 
-                    <Frame CornerRadius="50" HorizontalOptions="End" BackgroundColor="{StaticResource accent}" WidthRequest="100" HasShadow="False">
+                    <Frame CornerRadius="30" HorizontalOptions="End" BackgroundColor="{StaticResource accent}" WidthRequest="100" HasShadow="False">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding NextCommand}"/>
                         </Frame.GestureRecognizers>
