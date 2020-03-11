@@ -34,33 +34,39 @@
 
                     <flipper:ViewFlipper.FrontView>
                         <!--FrontCard-->
-                        <Frame CornerRadius="20" BackgroundColor="{StaticResource accent}" HeightRequest="200">
+                        <Frame CornerRadius="20" BackgroundColor="{StaticResource accent}" HeightRequest="240" Padding="0">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
 
-                                <Image x:Name="imgLogoCard" Grid.Row="0" WidthRequest="70" HorizontalOptions="EndAndExpand" Source="{Binding LogoCreditCard.Source}" PropertyChanged="Image_PropertyChanged"/>
+                                <Image x:Name="imgLogoCard" Grid.Row="0" Margin="0,15,15,0" WidthRequest="70" HorizontalOptions="EndAndExpand" Source="{Binding LogoCreditCard.Source}" PropertyChanged="Image_PropertyChanged"/>
 
                                 <StackLayout Grid.Row="1">
-                                    <Label x:Name="lbNumberValue" Text="XXXX XXXX XXXX XXXX" FontSize="Title" TextColor="{StaticResource placeholder_value}" Margin="0,0,0,30"/>
+                                    <Frame Padding="10" Margin="5,15" BorderColor="{Binding Number.BorderSpot.BorderColor}" BackgroundColor="Transparent" CornerRadius="15">
+                                        <Label x:Name="lbNumberValue" Text="XXXX XXXX XXXX XXXX" FontSize="Title" TextColor="{StaticResource placeholder_value}"/>
+                                    </Frame>
                                     <Grid ColumnSpacing="0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="0.3*"/>
+                                            <ColumnDefinition Width="0.4*"/>
                                         </Grid.ColumnDefinitions>
 
                                         <!--Name-->
-                                        <StackLayout Grid.Column="0">
-                                            <Label Text="CARD HOLDER NAME" TextColor="{StaticResource icons}" FontSize="Micro" FontAttributes="Bold"/>
-                                            <Label x:Name="lbNameValue" Text="NAME SURNAME" FontSize="Medium" TextColor="{StaticResource placeholder_value}"/>
+                                        <StackLayout Grid.Column="0" Spacing="0">
+                                            <Label Margin="15,0,0,0" Text="CARD HOLDER NAME" TextColor="{StaticResource icons}" FontSize="Micro" FontAttributes="Bold"/>
+                                            <Frame Padding="10" Margin="5,0,0,15" BorderColor="{Binding Name.BorderSpot.BorderColor}" BackgroundColor="Transparent" CornerRadius="15">
+                                                <Label x:Name="lbNameValue" Text="NAME SURNAME" FontSize="Medium" TextColor="{StaticResource placeholder_value}"/>
+                                            </Frame>
                                         </StackLayout>
 
                                         <!--Validated-->
-                                        <StackLayout Grid.Column="1">
-                                            <Label Text="VALID THRU" TextColor="{StaticResource icons}" HorizontalOptions="End" FontSize="Micro" FontAttributes="Bold"/>
-                                            <Label x:Name="lbValidValue" Text="MM/YY" FontSize="Medium" TextColor="{StaticResource placeholder_value}" HorizontalOptions="End"/>
+                                        <StackLayout Grid.Column="1" Spacing="0">
+                                            <Label Margin="0,0,15,0" Text="VALID THRU" TextColor="{StaticResource icons}" HorizontalOptions="End" FontSize="Micro" FontAttributes="Bold"/>
+                                            <Frame Padding="10" Margin="0,0,5,15" BorderColor="{Binding Valid.BorderSpot.BorderColor}" BackgroundColor="Transparent" CornerRadius="15">
+                                                <Label x:Name="lbValidValue" Text="MM/YY" FontSize="Medium" TextColor="{StaticResource placeholder_value}" HorizontalOptions="End"/>
+                                            </Frame>
                                         </StackLayout>
                                     </Grid>
                                 </StackLayout>
@@ -86,10 +92,11 @@
                                             <ColumnDefinition Width="0.5*"/>
                                         </Grid.ColumnDefinitions>
                                         <Label Grid.Column="0" Margin="15,0,0,0" Text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" MaxLines="3" TextColor="{StaticResource icons}"/>
-                                        <StackLayout  Grid.Column="1" Padding="10" BackgroundColor="WhiteSmoke" Margin="0,0,60,0">
-                                            <Label x:Name="lbCvvValue" Text="CVV" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                                        </StackLayout>
-
+                                        <Frame Grid.Column="1" Padding="10" BorderColor="{Binding Cvv.BorderSpot.BorderColor}" BackgroundColor="Transparent" CornerRadius="15" Margin="0,0,40,0">
+                                            <StackLayout Padding="10" BackgroundColor="WhiteSmoke">
+                                                <Label x:Name="lbCvvValue" Text="CVV" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                            </StackLayout>
+                                        </Frame>
                                     </Grid>
                                 </StackLayout>
                                 <Image Grid.Row="1" Margin="0,0,15,0" WidthRequest="50" HorizontalOptions="EndAndExpand" Source="{Binding LogoCreditCard.Source}"/>
@@ -100,7 +107,7 @@
                     </flipper:ViewFlipper.BackView>
                 </flipper:ViewFlipper>
 
-                <StackLayout Grid.Row="2" Spacing="20">
+                <StackLayout Grid.Row="2">
                     <Label Text="Type in your card details: " FontAttributes="Bold" FontSize="Title" TextColor="{StaticResource primary_text}"/>
 
                     <!--Card Number-->
@@ -139,11 +146,11 @@
                         <Label IsVisible="{Binding Cvv.ErrorMsg.IsVisible}" Text="{Binding Cvv.ErrorMsg.Text}" TextColor="Red"/>
                     </StackLayout>
 
-                    <Frame CornerRadius="50" HorizontalOptions="End" BackgroundColor="{StaticResource accent}" WidthRequest="100">
+                    <Frame CornerRadius="50" HorizontalOptions="End" BackgroundColor="{StaticResource accent}" WidthRequest="100" HasShadow="False">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding NextCommand}"/>
                         </Frame.GestureRecognizers>
-                        <Label Text="Next" FontAttributes="Bold" FontSize="Medium" TextColor="{StaticResource icons}" HorizontalOptions="Center" />
+                        <Label Text="{Binding ButtonText.Text}" FontAttributes="Bold" FontSize="Medium" TextColor="{StaticResource icons}" HorizontalOptions="Center" />
                     </Frame>
 
                 </StackLayout>

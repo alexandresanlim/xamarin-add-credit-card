@@ -23,6 +23,10 @@ namespace XamarinUI.AddCreditCard
                 Panel = new StackLayout
                 {
                     IsVisible = true
+                },
+                BorderSpot = new Frame
+                {
+                    BorderColor = Color.Yellow
                 }
             };
 
@@ -50,6 +54,11 @@ namespace XamarinUI.AddCreditCard
                 }
             };
 
+            ButtonText = new Label
+            {
+                Text = "Next"
+            };
+
             CardSimulationInfo = new ViewFlipper();
 
             LogoCreditCard = new Image();
@@ -63,7 +72,9 @@ namespace XamarinUI.AddCreditCard
                     return;
 
                 Number.Panel.IsVisible = false;
+                Number.BorderSpot.BorderColor = Color.Transparent;
                 Name.Panel.IsVisible = !Number.Panel.IsVisible;
+                Name.BorderSpot.BorderColor = Color.Yellow;
                 return;
             }
 
@@ -73,7 +84,9 @@ namespace XamarinUI.AddCreditCard
                     return;
 
                 Name.Panel.IsVisible = false;
+                Name.BorderSpot.BorderColor = Color.Transparent;
                 Valid.Panel.IsVisible = !Name.Panel.IsVisible;
+                Valid.BorderSpot.BorderColor = Color.Yellow;
                 return;
             }
 
@@ -83,8 +96,13 @@ namespace XamarinUI.AddCreditCard
                     return;
 
                 Valid.Panel.IsVisible = false;
+                Valid.BorderSpot.BorderColor = Color.Transparent;
                 Cvv.Panel.IsVisible = !Valid.Panel.IsVisible;
+                Cvv.BorderSpot.BorderColor = Color.Yellow;
                 CardSimulationInfo.FlipState = extention.FlipState.Back;
+
+                ButtonText.Text = "Done";
+
                 return;
             }
 
@@ -94,12 +112,21 @@ namespace XamarinUI.AddCreditCard
                     return;
 
                 Cvv.Panel.IsVisible = false;
+                Cvv.BorderSpot.BorderColor = Color.Transparent;
                 Number.Panel.IsVisible = !Cvv.Panel.IsVisible;
+                Number.BorderSpot.BorderColor = Color.Yellow;
                 CardSimulationInfo.FlipState = extention.FlipState.Front;
-                return;
-            }
 
+                ButtonText.Text = "Next";
+
+                Save();
+            }
         });
+
+        private void Save()
+        {
+
+        }
 
         private bool ValidatedNumberNext()
         {
@@ -223,6 +250,13 @@ namespace XamarinUI.AddCreditCard
             get { return _logoCreditCard; }
         }
 
+        private Label _buttonText;
+        public Label ButtonText
+        {
+            set { SetProperty(ref _buttonText, value); }
+            get { return _buttonText; }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
@@ -246,6 +280,7 @@ namespace XamarinUI.AddCreditCard
             Panel = new StackLayout();
             Entry = new Entry();
             ErrorMsg = new Label();
+            BorderSpot = new Frame();
         }
 
         public StackLayout Panel { get; set; }
@@ -253,5 +288,7 @@ namespace XamarinUI.AddCreditCard
         public Entry Entry { get; set; }
 
         public Label ErrorMsg { get; set; }
+
+        public Frame BorderSpot { get; set; }
     }
 }
