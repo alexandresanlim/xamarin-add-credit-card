@@ -18,70 +18,167 @@ namespace XamarinUI.AddCreditCard
 
         private void ResetProps()
         {
+            Number = new EntryPage
+            {
+                Panel = new StackLayout
+                {
+                    IsVisible = true
+                }
+            };
+
+            Name = new EntryPage
+            {
+                Panel = new StackLayout
+                {
+                    IsVisible = false
+                }
+            };
+
+            Valid = new EntryPage
+            {
+                Panel = new StackLayout
+                {
+                    IsVisible = false
+                }
+            };
+
+            Cvv = new EntryPage
+            {
+                Panel = new StackLayout
+                {
+                    IsVisible = false
+                }
+            };
+
             CardSimulationInfo = new ViewFlipper();
-
-            PanelNumber = new StackLayout
-            {
-                IsVisible = true
-            };
-
-            PanelName = new StackLayout
-            {
-                IsVisible = false
-            };
-
-            PanelValid = new StackLayout
-            {
-                IsVisible = false
-            };
-
-            PanelCvv = new StackLayout
-            {
-                IsVisible = false
-            };
-
-            EntryName = new Entry();
 
             LogoCreditCard = new Image();
         }
 
         public Command NextCommand => new Command(() =>
         {
-            if (PanelNumber.IsVisible)
+            if (Number.Panel.IsVisible)
             {
-                PanelNumber.IsVisible = false;
-                PanelName.IsVisible = !PanelNumber.IsVisible;
+                if (!ValidatedNumberNext())
+                    return;
+
+                Number.Panel.IsVisible = false;
+                Name.Panel.IsVisible = !Number.Panel.IsVisible;
                 return;
             }
 
-            if (PanelName.IsVisible)
+            if (Name.Panel.IsVisible)
             {
-                PanelName.IsVisible = false;
-                PanelValid.IsVisible = !PanelName.IsVisible;
+                if (!ValidatedNameNext())
+                    return;
+
+                Name.Panel.IsVisible = false;
+                Valid.Panel.IsVisible = !Name.Panel.IsVisible;
                 return;
             }
 
-            if (PanelValid.IsVisible)
+            if (Valid.Panel.IsVisible)
             {
-                PanelValid.IsVisible = false;
-                PanelCvv.IsVisible = !PanelValid.IsVisible;
+                if (!ValidatedValidNext())
+                    return;
+
+                Valid.Panel.IsVisible = false;
+                Cvv.Panel.IsVisible = !Valid.Panel.IsVisible;
                 CardSimulationInfo.FlipState = extention.FlipState.Back;
                 return;
             }
 
-            if (PanelCvv.IsVisible)
+            if (Cvv.Panel.IsVisible)
             {
-                PanelCvv.IsVisible = false;
-                PanelNumber.IsVisible = !PanelCvv.IsVisible;
+                if (!ValidatedCvvNext())
+                    return;
+
+                Cvv.Panel.IsVisible = false;
+                Number.Panel.IsVisible = !Cvv.Panel.IsVisible;
                 CardSimulationInfo.FlipState = extention.FlipState.Front;
                 return;
             }
 
         });
 
-        private async Task ValidatedEntry()
+        private bool ValidatedNumberNext()
         {
-            //Page.DisplayAlert()
+            Number.ErrorMsg.IsVisible = false;
+
+            if (string.IsNullOrEmpty(Number?.Entry?.Text) || !Number.Entry.Text.Length.Equals(19))
+            {
+                Number.ErrorMsg.Text = "Invalid credit card number";
+                Number.ErrorMsg.IsVisible = true;
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool ValidatedNameNext()
+        {
+            Name.ErrorMsg.IsVisible = false;
+
+            if (string.IsNullOrEmpty(Name?.Entry?.Text) || !Name.Entry.Text.Contains(" "))
+            {
+                Name.ErrorMsg.Text = "Invalid holder name";
+                Name.ErrorMsg.IsVisible = true;
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool ValidatedValidNext()
+        {
+            Valid.ErrorMsg.IsVisible = false;
+
+            if (string.IsNullOrEmpty(Valid?.Entry?.Text) || !Valid.Entry.Text.Length.Equals(5))
+            {
+                Valid.ErrorMsg.Text = "Invalid valid date";
+                Valid.ErrorMsg.IsVisible = true;
+                return false;
+            }
+
+            var invalidDateMsg = "";
+
+            var monthValid = new List<string> { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
+
+            var yearValid = new List<string>();
+
+            for (int i = DateTime.UtcNow.Year; i < DateTime.UtcNow.AddYears(15).Year; i++)
+            {
+                yearValid.Add(i.ToString().Substring(2, 2));
+            }
+
+            if (!monthValid.Contains(Valid.Entry.Text.Substring(0, 2)))
+                invalidDateMsg += "Invalid month\n";
+
+            if (!yearValid.Contains(Valid.Entry.Text.Substring(3, 2)))
+                invalidDateMsg += "Invalid year";
+
+            if (!string.IsNullOrEmpty(invalidDateMsg))
+            {
+                Valid.ErrorMsg.Text = invalidDateMsg;
+                Valid.ErrorMsg.IsVisible = true;
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool ValidatedCvvNext()
+        {
+            Cvv.ErrorMsg.IsVisible = false;
+
+            if (string.IsNullOrEmpty(Cvv?.Entry?.Text) || Cvv.Entry.Text.Length < 3)
+            {
+                Cvv.ErrorMsg.Text = "Invalid Cvv";
+                Cvv.ErrorMsg.IsVisible = true;
+                return false;
+            }
+
+            return true;
         }
 
         private ViewFlipper _cardSimulationInfo;
@@ -91,60 +188,32 @@ namespace XamarinUI.AddCreditCard
             get { return _cardSimulationInfo; }
         }
 
-        private StackLayout _panelNumber;
-        public StackLayout PanelNumber
+        private EntryPage _number;
+        public EntryPage Number
         {
-            set { SetProperty(ref _panelNumber, value); }
-            get { return _panelNumber; }
+            set { SetProperty(ref _number, value); }
+            get { return _number; }
         }
 
-        private StackLayout _panelName;
-        public StackLayout PanelName
+        private EntryPage _name;
+        public EntryPage Name
         {
-            set { SetProperty(ref _panelName, value); }
-            get { return _panelName; }
+            set { SetProperty(ref _name, value); }
+            get { return _name; }
         }
 
-        private StackLayout _panelValid;
-        public StackLayout PanelValid
+        private EntryPage _valid;
+        public EntryPage Valid
         {
-            set { SetProperty(ref _panelValid, value); }
-            get { return _panelValid; }
+            set { SetProperty(ref _valid, value); }
+            get { return _valid; }
         }
 
-        private StackLayout _panelCvv;
-        public StackLayout PanelCvv
+        private EntryPage _cvv;
+        public EntryPage Cvv
         {
-            set { SetProperty(ref _panelCvv, value); }
-            get { return _panelCvv; }
-        }
-
-        private Entry _entryNumber;
-        public Entry EntryNumber
-        {
-            set { SetProperty(ref _entryNumber, value); }
-            get { return _entryNumber; }
-        }
-
-        private Entry _entryName;
-        public Entry EntryName
-        {
-            set { SetProperty(ref _entryName, value); }
-            get { return _entryName; }
-        }
-
-        private Entry _entryValid;
-        public Entry EntryValid
-        {
-            set { SetProperty(ref _entryValid, value); }
-            get { return _entryValid; }
-        }
-
-        private Entry _entryCvv;
-        public Entry EntryCvv
-        {
-            set { SetProperty(ref _entryCvv, value); }
-            get { return _entryCvv; }
+            set { SetProperty(ref _cvv, value); }
+            get { return _cvv; }
         }
 
         private Image _logoCreditCard;
@@ -153,7 +222,6 @@ namespace XamarinUI.AddCreditCard
             set { SetProperty(ref _logoCreditCard, value); }
             get { return _logoCreditCard; }
         }
-
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -169,5 +237,21 @@ namespace XamarinUI.AddCreditCard
             OnPropertyChanged(propertyName);
             return true;
         }
+    }
+
+    public class EntryPage
+    {
+        public EntryPage()
+        {
+            Panel = new StackLayout();
+            Entry = new Entry();
+            ErrorMsg = new Label();
+        }
+
+        public StackLayout Panel { get; set; }
+
+        public Entry Entry { get; set; }
+
+        public Label ErrorMsg { get; set; }
     }
 }
