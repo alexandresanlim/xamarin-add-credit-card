@@ -2,6 +2,18 @@
 
 <img width="300" src="https://raw.githubusercontent.com/alexandresanlim/XamarinUI.AddCreditCard/master/XamarinUI.AddCreditCard/XamarinUI.AddCreditCard/src/screenshot/android/ingif.gif"/>
 
+## Validations Added
+- Empty or null entry
+- Length entry
+- Has Surname
+- Month valid (01 up to 12)
+- Year valid (current year up to +15)
+- Is a Credit Card valid from this regular expressions: https://www.regular-expressions.info/creditcard.html
+
+#### Credit card type support with return icons
+Master Card | Visa | American Express | Discover | JCB
+
+## More
 I got inspired from here:
 https://dribbble.com/shots/6440077-Add-a-New-Credit-Card-alternate-flow
 
