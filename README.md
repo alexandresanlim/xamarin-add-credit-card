@@ -2,7 +2,7 @@
 
 Android | iOS Front | iOS Back
 ------------ | ------------- | ------------------
-<img width="200" src="https://raw.githubusercontent.com/alexandresanlim/XamarinUI.AddCreditCard/master/XamarinUI.AddCreditCard/XamarinUI.AddCreditCard/src/screenshot/android.gif"/>| <img width="200" src="https://raw.githubusercontent.com/alexandresanlim/XamarinUI.AddCreditCard/master/XamarinUI.AddCreditCard/XamarinUI.AddCreditCard/src/screenshot/iosfront.png"/> | <img width="200" src="https://raw.githubusercontent.com/alexandresanlim/XamarinUI.AddCreditCard/master/XamarinUI.AddCreditCard/XamarinUI.AddCreditCard/src/screenshot/iosback.png"/>
+<img width="250" src="https://raw.githubusercontent.com/alexandresanlim/XamarinUI.AddCreditCard/master/XamarinUI.AddCreditCard/XamarinUI.AddCreditCard/src/screenshot/android.gif"/>| <img width="250" src="https://raw.githubusercontent.com/alexandresanlim/XamarinUI.AddCreditCard/master/XamarinUI.AddCreditCard/XamarinUI.AddCreditCard/src/screenshot/iosfront.png"/> | <img width="250" src="https://raw.githubusercontent.com/alexandresanlim/XamarinUI.AddCreditCard/master/XamarinUI.AddCreditCard/XamarinUI.AddCreditCard/src/screenshot/iosback.png"/>
 
 ## Validations Added
 - Empty or null entry
