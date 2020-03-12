@@ -86,11 +86,11 @@ namespace XamarinUI.AddCreditCard.help
                 case CardType.MasterCard:
                     return "https://brand.mastercard.com/content/dam/mccom/brandcenter/thumbnails/mastercard_circles_92px_2x.png";
                 case CardType.Visa:
-                    return "https://usa.visa.com/dam/VCOM/regional/lac/ENG/Default/Partner%20With%20Us/Payment%20Technology/visapos/full-color-800x450.jpg";
+                    return "https://cdn.visa.com/cdn/assets/images/logos/visa/logo.png";
                 case CardType.AmericanExpress:
-                    return "https://about.americanexpress.com/sites/americanexpress.newshq.businesswire.com/files/imagecache/logo_fullnode_thumb/logo/image/AXP_BlueBoxLogo_EXTRALARGEscale_RGB_DIGITAL_1600x1600.png";
+                    return "https://www.americanexpress.com/content/dam/amex/br/images/new-homepage/american-express-logo.png";
                 case CardType.Discover:
-                    return "https://www.discover.com/company/images/newsroom/media-downloads/discover.png";
+                    return "https://www.discover.com/global/images/discover-logo.png";
                 case CardType.JCB:
                     return "http://www.jcbeurope.eu/about/emblem_slogan/images/index/logo_img01.jpg";
                 case CardType.Undefined:
