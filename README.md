@@ -6,8 +6,8 @@
 - Empty or null entry
 - Length entry
 - Has Surname
-- Month valid thru (01 up to 12)
-- Year valid thru (current year up to +15)
+- Month valid (01 up to 12)
+- Year valid (current year up to +15)
 - Is a Credit Card valid from this regular expressions: https://www.regular-expressions.info/creditcard.html
 
 #### Credit card type support with return icons
