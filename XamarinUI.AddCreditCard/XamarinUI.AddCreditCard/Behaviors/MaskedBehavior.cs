@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 
-namespace XamarinUI.AddCreditCard.behavior
+namespace XamarinUI.AddCreditCard.Behaviors
 {
     public class MaskedBehavior : Behavior<Entry>
     {

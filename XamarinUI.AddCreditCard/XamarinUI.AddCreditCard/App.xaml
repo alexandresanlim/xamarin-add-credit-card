@@ -7,9 +7,9 @@
              x:Class="XamarinUI.AddCreditCard.App">
     <Application.Resources>
         <Color x:Key="primary">#9C27B0</Color>
-        <Color x:Key="primary_dark">#7B1FA2</Color>
+        <Color x:Key="primary_dark">#00796B</Color>
         <Color x:Key="primary_light">#E1BEE7</Color>
-        <Color x:Key="accent">#7C4DFF</Color>
+        <Color x:Key="accent">#c0392b</Color>
         <Color x:Key="primary_text">#212121</Color>
         <Color x:Key="secondary_text">#757575</Color>
         <Color x:Key="icons">#FFFFFF</Color>

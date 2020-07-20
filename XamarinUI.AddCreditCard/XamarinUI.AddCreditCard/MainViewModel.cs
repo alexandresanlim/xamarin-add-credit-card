@@ -5,12 +5,12 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using XamarinUI.AddCreditCard.extention;
-using XamarinUI.AddCreditCard.help;
+using XamarinUI.AddCreditCard.Extentions;
+using XamarinUI.AddCreditCard.Helpers;
 
 namespace XamarinUI.AddCreditCard
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel : ViewModelBase
     {
         public MainViewModel()
         {
@@ -100,7 +100,7 @@ namespace XamarinUI.AddCreditCard
                 Valid.BorderSpot.BorderColor = Color.Transparent;
                 Cvv.Panel.IsVisible = !Valid.Panel.IsVisible;
                 Cvv.BorderSpot.BorderColor = Color.Yellow;
-                CardSimulationInfo.FlipState = extention.FlipState.Back;
+                CardSimulationInfo.FlipState = FlipState.Back;
 
                 ButtonText.Text = "Done";
 
@@ -116,7 +116,7 @@ namespace XamarinUI.AddCreditCard
                 Cvv.BorderSpot.BorderColor = Color.Transparent;
                 Number.Panel.IsVisible = !Cvv.Panel.IsVisible;
                 Number.BorderSpot.BorderColor = Color.Yellow;
-                CardSimulationInfo.FlipState = extention.FlipState.Front;
+                CardSimulationInfo.FlipState = FlipState.Front;
 
                 ButtonText.Text = "Next";
 
@@ -131,6 +131,10 @@ namespace XamarinUI.AddCreditCard
 
         private bool ValidatedNumberNext()
         {
+#if DEBUG
+            return true;
+#endif
+
             Number.ErrorMsg.IsVisible = false;
 
             if (string.IsNullOrEmpty(Number?.Entry?.Text) || !Number.Entry.Text.Length.Equals(19) || !Number.Entry.Text.IsACreditCardValid())
@@ -145,6 +149,10 @@ namespace XamarinUI.AddCreditCard
 
         private bool ValidatedNameNext()
         {
+#if DEBUG
+            return true;
+#endif
+
             Name.ErrorMsg.IsVisible = false;
 
             if (string.IsNullOrEmpty(Name?.Entry?.Text) || !Name.Entry.Text.Contains(" "))
@@ -159,6 +167,10 @@ namespace XamarinUI.AddCreditCard
 
         private bool ValidatedValidNext()
         {
+#if DEBUG
+            return true;
+#endif
+
             Valid.ErrorMsg.IsVisible = false;
 
             if (string.IsNullOrEmpty(Valid?.Entry?.Text) || !Valid.Entry.Text.Length.Equals(5))
@@ -197,6 +209,10 @@ namespace XamarinUI.AddCreditCard
 
         private bool ValidatedCvvNext()
         {
+#if DEBUG
+            return true;
+#endif
+
             Cvv.ErrorMsg.IsVisible = false;
 
             if (string.IsNullOrEmpty(Cvv?.Entry?.Text) || Cvv.Entry.Text.Length < 3)
@@ -258,20 +274,7 @@ namespace XamarinUI.AddCreditCard
             get { return _buttonText; }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
-        {
-            if (Object.Equals(storage, value))
-                return false;
-            storage = value;
-            OnPropertyChanged(propertyName);
-            return true;
-        }
+        
     }
 
     public class EntryPage

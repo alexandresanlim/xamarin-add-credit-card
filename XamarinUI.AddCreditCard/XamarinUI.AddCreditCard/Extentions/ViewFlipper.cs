@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 
-namespace XamarinUI.AddCreditCard.extention
+namespace XamarinUI.AddCreditCard.Extentions
 {
     public class ViewFlipper : ContentView
     {

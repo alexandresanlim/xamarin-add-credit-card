@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using XamarinUI.AddCreditCard.help;
+using XamarinUI.AddCreditCard.Helpers;
 
 namespace XamarinUI.AddCreditCard
 {
@@ -57,12 +57,15 @@ namespace XamarinUI.AddCreditCard
 
                 if (lbNumberValue.Text.Length.Equals(1) && string.IsNullOrEmpty(e?.OldTextValue))
                 {
-                    var cardType = e.NewTextValue.GetCardType();
-
-                    if (cardType != CreditCardHelp.CardType.Undefined)
+                    Task.Run(async () =>
                     {
-                        Vm.LogoCreditCard.Source = cardType.GetLogoUrl();
-                    }
+                        var cardType = e.NewTextValue.GetCardType();
+
+                        if (cardType != CreditCardHelp.CardType.Undefined)
+                        {
+                            Vm.LogoCreditCard.Source = await cardType.GetLogoUrl();
+                        }
+                    });
                 }
             }
         }
@@ -120,12 +123,12 @@ namespace XamarinUI.AddCreditCard
         {
             if (e.PropertyName.Equals(nameof(StackLayout.IsVisible)) && ((StackLayout)sender).IsVisible)
             {
-                Task.Run(async () => 
+                Task.Run(async () =>
                 {
                     await Task.Delay(200);
                     entryNumber.Focus();
                 });
-                
+
             }
         }
 
@@ -138,7 +141,7 @@ namespace XamarinUI.AddCreditCard
                     await Task.Delay(200);
                     entryName.Focus();
                 });
-                
+
             }
         }
 
@@ -151,7 +154,7 @@ namespace XamarinUI.AddCreditCard
                     await Task.Delay(200);
                     entryValid.Focus();
                 });
-                
+
             }
         }
 
@@ -163,7 +166,7 @@ namespace XamarinUI.AddCreditCard
                 {
                     await Task.Delay(200);
                     entryCvv.Focus();
-                });                
+                });
             }
         }
     }

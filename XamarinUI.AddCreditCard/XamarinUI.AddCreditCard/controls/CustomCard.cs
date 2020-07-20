@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 
-namespace XamarinUI.AddCreditCard.controls
+namespace XamarinUI.AddCreditCard.Controls
 {
     public class CustomCard : Frame
     {

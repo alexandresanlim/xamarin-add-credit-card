@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
-namespace XamarinUI.AddCreditCard.help
+namespace XamarinUI.AddCreditCard.Helpers
 {
     public static class CreditCardHelp
     {
@@ -78,25 +79,30 @@ namespace XamarinUI.AddCreditCard.help
             return CardType.Undefined;
         }
 
-        public static string GetLogoUrl(this CardType cardType)
+        public static async Task<string> GetLogoUrl(this CardType cardType)
         {
-            switch (cardType)
+            await Task.Run(async () =>
             {
-                
-                case CardType.MasterCard:
-                    return "https://brand.mastercard.com/content/dam/mccom/brandcenter/thumbnails/mastercard_circles_92px_2x.png";
-                case CardType.Visa:
-                    return "https://cdn.visa.com/cdn/assets/images/logos/visa/logo.png";
-                case CardType.AmericanExpress:
-                    return "https://www.americanexpress.com/content/dam/amex/br/images/new-homepage/american-express-logo.png";
-                case CardType.Discover:
-                    return "https://www.discover.com/global/images/discover-logo.png";
-                case CardType.JCB:
-                    return "http://www.jcbeurope.eu/about/emblem_slogan/images/index/logo_img01.jpg";
-                case CardType.Undefined:
-                default:
-                    return "";
-            }
+                switch (cardType)
+                {
+
+                    case CardType.MasterCard:
+                        return "https://brand.mastercard.com/content/dam/mccom/brandcenter/thumbnails/mastercard_circles_92px_2x.png";
+                    case CardType.Visa:
+                        return "https://cdn.visa.com/cdn/assets/images/logos/visa/logo.png";
+                    case CardType.AmericanExpress:
+                        return "https://www.americanexpress.com/content/dam/amex/br/images/new-homepage/american-express-logo.png";
+                    case CardType.Discover:
+                        return "https://www.discover.com/global/images/discover-logo.png";
+                    case CardType.JCB:
+                        return "http://www.jcbeurope.eu/about/emblem_slogan/images/index/logo_img01.jpg";
+                    case CardType.Undefined:
+                    default:
+                        return "";
+                }
+            });
+
+            return "";
         }
     }
 }
