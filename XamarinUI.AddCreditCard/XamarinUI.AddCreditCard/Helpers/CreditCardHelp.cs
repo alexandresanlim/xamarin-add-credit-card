@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using XamarinUI.AddCreditCard.Models;
 
 namespace XamarinUI.AddCreditCard.Helpers
 {
     public static class CreditCardHelp
     {
-        public enum CardType
-        {
-            Undefined, MasterCard, Visa, AmericanExpress, Discover, JCB
-        };
-
         public static bool IsACreditCardValid(this string cardNumber)
         {
             return cardNumber.GetCardTypeFromRegularExpression() != CardType.Undefined;

@@ -10,7 +10,7 @@ namespace XamarinUI.AddCreditCard
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new CreditCardListPage();
         }
 
         protected override void OnStart()

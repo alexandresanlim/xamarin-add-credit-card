@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace XamarinUI.AddCreditCard
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CreditCartListPage : ContentPage
+    public partial class CreditCardListPage : ContentPage
     {
-        public CreditCartListPage()
+        public CreditCardListPage()
         {
             InitializeComponent();
         }

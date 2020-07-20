@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using XamarinUI.AddCreditCard.Helpers;
+using XamarinUI.AddCreditCard.Models;
 
 namespace XamarinUI.AddCreditCard
 {
@@ -61,7 +62,7 @@ namespace XamarinUI.AddCreditCard
                     {
                         var cardType = e.NewTextValue.GetCardType();
 
-                        if (cardType != CreditCardHelp.CardType.Undefined)
+                        if (cardType != CardType.Undefined)
                         {
                             Vm.LogoCreditCard.Source = await cardType.GetLogoUrl();
                         }
