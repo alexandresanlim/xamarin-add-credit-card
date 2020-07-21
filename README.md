@@ -4,7 +4,7 @@ Android | iOS Front | iOS Back
 ------------ | ------------- | ------------------
 <img width="250" src="https://raw.githubusercontent.com/alexandresanlim/XamarinUI.AddCreditCard/master/XamarinUI.AddCreditCard/XamarinUI.AddCreditCard/src/screenshot/android.gif"/>| <img width="250" src="https://raw.githubusercontent.com/alexandresanlim/XamarinUI.AddCreditCard/master/XamarinUI.AddCreditCard/XamarinUI.AddCreditCard/src/screenshot/iosfront.png"/> | <img width="250" src="https://raw.githubusercontent.com/alexandresanlim/XamarinUI.AddCreditCard/master/XamarinUI.AddCreditCard/XamarinUI.AddCreditCard/src/screenshot/iosback.png"/>
 
-## Validations Added
+## Validations Added on release
 - Empty or null entry
 - Length entry
 - Has Surname
