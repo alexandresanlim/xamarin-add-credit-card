@@ -69,7 +69,7 @@ namespace XamarinUI.AddCreditCard
                             {
                                 FontFamily = IconExtention.GetIconFontFamily(IconExtention.FontAwesomeType.brand),
                                 Glyph = cardType.GetLogo(),
-                                Size = Device.GetNamedSize(NamedSize.Small, typeof(FontImageSource)),
+                                Size = 40,
                                 Color = Color.White
                             };
                         }
