@@ -27,6 +27,30 @@ namespace XamarinUI.AddCreditCard.Models
 
         public string ValidPresentation => Valid.ToString("MM/yy");
 
+        public string IconFromType
+        {
+            //&#xf1f1;
+
+            get
+            {
+                switch (Type)
+                {
+                    case CardType.MasterCard:
+                        return "\uf1f1";
+                    case CardType.Visa:
+                        return "\uf1f0";
+                    case CardType.AmericanExpress:
+                        return "\uf1f3";
+                    case CardType.Discover:
+                        return "\uf1f2";
+                    case CardType.JCB:
+                        return "\uf24b";
+                }
+
+                return "";
+            }
+        }
+
         public static List<CreditCartInfo> GetData()
         {
             return new List<CreditCartInfo>
@@ -34,21 +58,21 @@ namespace XamarinUI.AddCreditCard.Models
                 new CreditCartInfo
                 {
                     MaskedNumber = "4444********4444",
-                    Type = CardType.AmericanExpress,
+                    Type = CardType.MasterCard,
                     PrimaryDarkColor = Color.FromHex("#C2185B"),
                     PrimaryColor = Color.FromHex("#E91E63")
                 },
                 new CreditCartInfo
                 {
                     MaskedNumber = "1111********4444",
-                    Type = CardType.AmericanExpress,
+                    Type = CardType.Discover,
                     PrimaryDarkColor = Color.FromHex("#00796B"),
                     PrimaryColor = Color.FromHex("#009688")
                 },
                 new CreditCartInfo
                 {
                     MaskedNumber = "4444********6666",
-                    Type = CardType.AmericanExpress,
+                    Type = CardType.Visa,
                     PrimaryDarkColor = Color.FromHex("#7B1FA2"),
                     PrimaryColor = Color.FromHex("#9C27B0")
                 },
@@ -62,14 +86,14 @@ namespace XamarinUI.AddCreditCard.Models
                 new CreditCartInfo
                 {
                     MaskedNumber = "2222********5555",
-                    Type = CardType.AmericanExpress,
+                    Type = CardType.Discover,
                     PrimaryDarkColor = Color.FromHex("#388E3C"),
                     PrimaryColor = Color.FromHex("#4CAF50")
                 },
                 new CreditCartInfo
                 {
                     MaskedNumber = "3333********4444",
-                    Type = CardType.AmericanExpress,
+                    Type = CardType.JCB,
                     PrimaryDarkColor = Color.FromHex("#512DA8"),
                     PrimaryColor = Color.FromHex("#673AB7")
                 }

@@ -16,6 +16,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
             <!--Header-->
@@ -33,13 +34,6 @@
                     </OnPlatform>
                 </StackLayout.Padding>
 
-                <controls:CustomFrame BackgroundColor="{StaticResource accent}" HorizontalOptions="End" Padding="30,10" CornerRadius="25">
-                    <controls:CustomFrame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateToAddCardCommand}" />
-                    </controls:CustomFrame.GestureRecognizers>
-                    <Label Text="Cadatrar um novo" TextColor="{StaticResource icons}" FontAttributes="Bold"/>
-                </controls:CustomFrame>
-
             </StackLayout>
 
             <!--Body-->
@@ -56,13 +50,25 @@
                             <StackLayout Padding="12">
 
                                 <controls:CustomFrame
-                                    Padding="20,50,20,30"
+                                    Padding="20"
                                     CornerRadius="20"
                                     BackgroundGradientStartColor="{Binding PrimaryColor}"
                                     BackgroundGradientEndColor="{Binding PrimaryDarkColor}"
                                     >
 
                                     <StackLayout>
+
+                                        <Image HorizontalOptions="End" Margin="0,0,0,10">
+                                            <Image.Source>
+                                                <FontImageSource
+                                                Color="{DynamicResource icons}"
+                                                FontFamily="{DynamicResource FontAwesomeBrand}"
+                                                Size="50"
+                                                Glyph="{Binding IconFromType}"
+                                                />
+                                            </Image.Source>
+                                        </Image>
+
                                         <Label Text="{Binding MaskedNumber}" FontAttributes="Bold" FontSize="Title" TextColor="{StaticResource icons}"/>
 
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,30,0,0">
@@ -84,7 +90,7 @@
 
                                 </controls:CustomFrame>
 
-                                <Label Text="Opções" FontSize="Medium" FontAttributes="Bold" TextColor="{StaticResource primary_text}" Margin="15,15,0,0" />
+                                <Label Text="Options" FontSize="Medium" FontAttributes="Bold" TextColor="{StaticResource primary_text}" Margin="15,15,0,0" />
 
                                 <controls:CustomFrame BackgroundColor="White" Padding="15" CornerRadius="10">
 
@@ -97,8 +103,8 @@
 
                                 </controls:CustomFrame>
 
-                                <controls:CustomFrame CornerRadius="25" Padding="10" BackgroundColor="{StaticResource accent}" Margin="0,15,0,0">
-                                    <Label Text="Excluir cartão" FontAttributes="Bold" FontSize="Micro" TextColor="{StaticResource icons}" HorizontalOptions="Center" />
+                                <controls:CustomFrame CornerRadius="25" Padding="10" BackgroundColor="Gray" Margin="0,15,0,0">
+                                    <Label Text="DELETE" FontAttributes="Bold" FontSize="Micro" TextColor="{StaticResource icons}" HorizontalOptions="Center" />
                                 </controls:CustomFrame>
                                 
                                 
@@ -109,6 +115,15 @@
                         </DataTemplate>
                     </CarouselView.ItemTemplate>
                 </CarouselView>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2" Padding="15">
+                <controls:CustomFrame BackgroundColor="{StaticResource accent}" Padding="15" CornerRadius="30,0,30,30">
+                    <controls:CustomFrame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToAddCardCommand}" />
+                    </controls:CustomFrame.GestureRecognizers>
+                    <Label Text="ADD NEW" TextColor="{StaticResource icons}" FontAttributes="Bold" HorizontalOptions="Center"/>
+                </controls:CustomFrame>
             </StackLayout>
 
         </Grid>

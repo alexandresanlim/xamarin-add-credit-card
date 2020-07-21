@@ -29,13 +29,13 @@
 
                         <controls:CustomFrame.Padding>
                             <OnPlatform
-                    x:TypeArguments="Thickness">
-                                <On
-                        Platform="iOS"
-                        Value="50,25" />
-                                <On
-                        Platform="Android"
-                        Value="50,30" />
+                                x:TypeArguments="Thickness">
+                                            <On
+                                    Platform="iOS"
+                                    Value="50,25" />
+                                            <On
+                                    Platform="Android"
+                                    Value="50,30" />
                             </OnPlatform>
                         </controls:CustomFrame.Padding>
 
