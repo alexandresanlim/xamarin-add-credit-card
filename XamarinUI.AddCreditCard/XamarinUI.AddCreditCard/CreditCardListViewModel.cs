@@ -16,7 +16,7 @@ namespace XamarinUI.AddCreditCard
 
         public Command LoadDataCommand => new Command(() =>
         {
-            CreditCartList = new ObservableCollection<CreditCartInfo>(CreditCartInfo.GetData());
+            CreditCartList = new ObservableCollection<CreditCardInfo>(CreditCardInfo.GetData());
         });
 
         public Command NavigateToAddCardCommand => new Command(async () =>
@@ -24,8 +24,8 @@ namespace XamarinUI.AddCreditCard
             await App.Current.MainPage.Navigation.PushModalAsync(new CreditCardEditPage(), true);
         });
 
-        private ObservableCollection<CreditCartInfo> _creditCartList;
-        public ObservableCollection<CreditCartInfo> CreditCartList
+        private ObservableCollection<CreditCardInfo> _creditCartList;
+        public ObservableCollection<CreditCardInfo> CreditCartList
         {
             set { SetProperty(ref _creditCartList, value); }
             get { return _creditCartList; }
