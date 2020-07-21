@@ -26,21 +26,23 @@
 
             <StackLayout Grid.Row="0" BackgroundColor="{StaticResource primary_dark}">
 
-                <StackLayout HorizontalOptions="Start" Padding="15,10">
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding CloseModalCommand}"/>
-                    </StackLayout.GestureRecognizers>
-                    <!--<StackLayout.Padding>
+                <StackLayout HorizontalOptions="Start">
+                    <StackLayout.Padding>
                             <OnPlatform
                                 x:TypeArguments="Thickness">
                                 <On
                                     Platform="iOS"
-                                    Value="50,25" />
+                                    Value="15,20,15,10" />
                                 <On
                                     Platform="Android"
-                                    Value="50,30" />
+                                    Value="15,10,15,10" />
                             </OnPlatform>
-                        </StackLayout.Padding>-->
+                        </StackLayout.Padding>
+                    
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CloseModalCommand}"/>
+                    </StackLayout.GestureRecognizers>
+                    
 
                     <Image>
                         <Image.Source>
@@ -80,7 +82,7 @@
                                         <Grid ColumnSpacing="0">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="0.4*"/>
+                                                <ColumnDefinition Width="auto"/>
                                             </Grid.ColumnDefinitions>
 
                                             <!--Name-->
@@ -185,7 +187,7 @@
                     <Label IsVisible="{Binding Cvv.ErrorMsg.IsVisible}" Text="{Binding Cvv.ErrorMsg.Text}" TextColor="Red"/>
                 </StackLayout>
 
-                <controls:CustomFrame CornerRadius="30,0,30,30" BackgroundColor="{StaticResource accent}" Padding="50,10" HorizontalOptions="End">
+                <controls:CustomFrame CornerRadius="20,0,20,20" BackgroundColor="{StaticResource accent}" Padding="50,10" HorizontalOptions="End" Margin="0,5,0,0">
                     <controls:CustomFrame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NextCommand}"/>
                     </controls:CustomFrame.GestureRecognizers>
