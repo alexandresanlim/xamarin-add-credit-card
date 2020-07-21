@@ -21,7 +21,7 @@ namespace XamarinUI.AddCreditCard
 
         public Command NavigateToAddCardCommand => new Command(async () =>
         {
-            await App.Current.MainPage.Navigation.PushModalAsync(new MainPage());
+            await App.Current.MainPage.Navigation.PushModalAsync(new CreditCardEditPage(), true);
         });
 
         private ObservableCollection<CreditCartInfo> _creditCartList;

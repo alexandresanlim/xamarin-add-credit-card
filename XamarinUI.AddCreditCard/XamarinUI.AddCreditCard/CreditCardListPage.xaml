@@ -20,7 +20,7 @@
             </Grid.RowDefinitions>
 
             <!--Header-->
-            <StackLayout Grid.Row="0" Padding="30">
+            <StackLayout Grid.Row="0">
 
                 <StackLayout.Padding>
                     <OnPlatform
@@ -71,7 +71,7 @@
 
                                         <Label Text="{Binding MaskedNumber}" FontAttributes="Bold" FontSize="Title" TextColor="{StaticResource icons}"/>
 
-                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,30,0,0">
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,15,0,0">
                                             <Label Text="CARD HOLDER NAME" FontSize="Micro" FontAttributes="Bold" TextColor="{StaticResource icons}"/>
                                             <Label Text="VALID THRU" FontSize="Micro" FontAttributes="Bold" TextColor="{StaticResource icons}" HorizontalOptions="EndAndExpand"/>
                                             
@@ -95,7 +95,7 @@
                                 <controls:CustomFrame BackgroundColor="White" Padding="15" CornerRadius="10">
 
                                     <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                                        <Label Text="DEFINIR COMO PRINCIPAL" FontAttributes="Bold" FontSize="Micro" TextColor="{StaticResource secondary_text}" VerticalOptions="CenterAndExpand" />
+                                        <Label Text="SET AS DEFAULT" FontAttributes="Bold" FontSize="Micro" TextColor="{StaticResource secondary_text}" VerticalOptions="CenterAndExpand" />
                                         <Switch HorizontalOptions="EndAndExpand" />
                                     </StackLayout>
 

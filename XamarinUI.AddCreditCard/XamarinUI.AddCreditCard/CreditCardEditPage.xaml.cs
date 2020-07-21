@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using XamarinUI.AddCreditCard.Extentions;
 using XamarinUI.AddCreditCard.Helpers;
 using XamarinUI.AddCreditCard.Models;
 
@@ -13,7 +14,7 @@ namespace XamarinUI.AddCreditCard
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
-    public partial class MainPage : ContentPage
+    public partial class CreditCardEditPage : ContentPage
     {
         public Color PlaceholderValueColor { get { return (Color)App.Current.Resources.FirstOrDefault(x => x.Key.Equals("placeholder_value")).Value; } }
 
@@ -21,9 +22,9 @@ namespace XamarinUI.AddCreditCard
 
         public uint FadeCreditCardLogo { get { return 1000; } }
 
-        public MainViewModel Vm { get { return (MainViewModel)BindingContext; } }
+        public CreditCardEditViewModel Vm { get { return (CreditCardEditViewModel)BindingContext; } }
 
-        public MainPage()
+        public CreditCardEditPage()
         {
             InitializeComponent();
         }
@@ -64,7 +65,13 @@ namespace XamarinUI.AddCreditCard
 
                         if (cardType != CardType.Undefined)
                         {
-                            Vm.LogoCreditCard.Source = await cardType.GetLogoUrl();
+                            Vm.LogoCreditCard.Source = new FontImageSource
+                            {
+                                FontFamily = IconExtention.GetIconFontFamily(IconExtention.FontAwesomeType.brand),
+                                Glyph = cardType.GetLogo(),
+                                Size = Device.GetNamedSize(NamedSize.Small, typeof(FontImageSource)),
+                                Color = Color.White
+                            };
                         }
                     });
                 }

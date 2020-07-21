@@ -10,9 +10,9 @@ using XamarinUI.AddCreditCard.Helpers;
 
 namespace XamarinUI.AddCreditCard
 {
-    public class MainViewModel : ViewModelBase
+    public class CreditCardEditViewModel : ViewModelBase
     {
-        public MainViewModel()
+        public CreditCardEditViewModel()
         {
             ResetProps();
         }

@@ -74,31 +74,5 @@ namespace XamarinUI.AddCreditCard.Helpers
 
             return CardType.Undefined;
         }
-
-        public static async Task<string> GetLogoUrl(this CardType cardType)
-        {
-            await Task.Run(async () =>
-            {
-                switch (cardType)
-                {
-
-                    case CardType.MasterCard:
-                        return "https://brand.mastercard.com/content/dam/mccom/brandcenter/thumbnails/mastercard_circles_92px_2x.png";
-                    case CardType.Visa:
-                        return "https://cdn.visa.com/cdn/assets/images/logos/visa/logo.png";
-                    case CardType.AmericanExpress:
-                        return "https://www.americanexpress.com/content/dam/amex/br/images/new-homepage/american-express-logo.png";
-                    case CardType.Discover:
-                        return "https://www.discover.com/global/images/discover-logo.png";
-                    case CardType.JCB:
-                        return "http://www.jcbeurope.eu/about/emblem_slogan/images/index/logo_img01.jpg";
-                    case CardType.Undefined:
-                    default:
-                        return "";
-                }
-            });
-
-            return "";
-        }
     }
 }

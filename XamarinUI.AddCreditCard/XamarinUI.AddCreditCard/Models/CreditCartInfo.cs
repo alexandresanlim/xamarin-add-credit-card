@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace XamarinUI.AddCreditCard.Models
@@ -27,29 +28,7 @@ namespace XamarinUI.AddCreditCard.Models
 
         public string ValidPresentation => Valid.ToString("MM/yy");
 
-        public string IconFromType
-        {
-            //&#xf1f1;
-
-            get
-            {
-                switch (Type)
-                {
-                    case CardType.MasterCard:
-                        return "\uf1f1";
-                    case CardType.Visa:
-                        return "\uf1f0";
-                    case CardType.AmericanExpress:
-                        return "\uf1f3";
-                    case CardType.Discover:
-                        return "\uf1f2";
-                    case CardType.JCB:
-                        return "\uf24b";
-                }
-
-                return "";
-            }
-        }
+        public string IconFromType => Type.GetLogo();
 
         public static List<CreditCartInfo> GetData()
         {
@@ -100,6 +79,29 @@ namespace XamarinUI.AddCreditCard.Models
             };
         }
     }
+
+    public static class CreditCartInfoExtention
+    {
+        public static string GetLogo(this CardType cardType)
+        {
+            switch (cardType)
+            {
+                case CardType.MasterCard:
+                    return "\uf1f1";
+                case CardType.Visa:
+                    return "\uf1f0";
+                case CardType.AmericanExpress:
+                    return "\uf1f3";
+                case CardType.Discover:
+                    return "\uf1f2";
+                case CardType.JCB:
+                    return "\uf24b";
+            }
+
+            return "";
+        }
+    }
+
 
     public enum CardType
     {

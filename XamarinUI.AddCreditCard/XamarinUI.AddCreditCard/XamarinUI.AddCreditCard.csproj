@@ -20,6 +20,9 @@
     <Compile Update="CreditCardListPage.xaml.cs">
       <DependentUpon>CreditCardListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="CreditCardEditPage.xaml.cs">
+      <DependentUpon>CreditCardEditPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

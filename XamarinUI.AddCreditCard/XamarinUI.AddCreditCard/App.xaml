@@ -23,8 +23,8 @@
         </OnPlatform>
 
         <OnPlatform x:Key="FontAwesomeBrand" x:TypeArguments="x:String">
-            <On Platform="iOS" Value="Font Awesome 5 Free" />
-            <On Platform="Android" Value="fa-brands-400.ttf#Font Awesome 5 Free" />
+            <On Platform="iOS" Value="Font Awesome 5 Brands" />
+            <On Platform="Android" Value="fa-brands-400.ttf#Font Awesome 5 Brands" />
         </OnPlatform>
 
     </Application.Resources>

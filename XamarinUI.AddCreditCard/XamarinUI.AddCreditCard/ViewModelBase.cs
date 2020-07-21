@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Xamarin.Forms;
 
 namespace XamarinUI.AddCreditCard
 {
     public class ViewModelBase : INotifyPropertyChanged
     {
+
+        public Command CloseModalCommand => new Command(async () =>
+        {
+            await App.Current.MainPage.Navigation.PopModalAsync();
+        });
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
