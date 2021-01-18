@@ -24,7 +24,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <StackLayout Grid.Row="0" BackgroundColor="{StaticResource primary_dark}">
+            <StackLayout Grid.Row="0">
 
                 <StackLayout HorizontalOptions="Start">
                     <StackLayout.Padding>
@@ -47,7 +47,7 @@
                     <Image>
                         <Image.Source>
                             <FontImageSource
-                                                Color="{DynamicResource icons}"
+                                                Color="{DynamicResource primary}"
                                                 FontFamily="{DynamicResource FontAwesomeSolid}"
                                                 Size="Title"
                                                 Glyph="&#xf057;"
@@ -59,7 +59,7 @@
 
             </StackLayout>
 
-            <controls:CustomFrame Grid.Row="1" BackgroundColor="{StaticResource  primary_dark}" CornerRadius="0,0,60,0" Padding="50,0,50,30">
+            <controls:CustomFrame Grid.Row="1" Padding="50,0,50,30">
 
                 <StackLayout>
 

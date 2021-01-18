@@ -49,17 +49,18 @@
 
                             <StackLayout Padding="12">
 
-                                <controls:CustomFrame
+                                <Frame
                                     Padding="20"
                                     CornerRadius="20"
+                                    BackgroundColor="{Binding PrimaryColor}"
                                     >
 
-                                    <controls:CustomFrame.Background>
+                                    <!--<Frame.Background>
                                         <LinearGradientBrush EndPoint="0,1">
                                             <GradientStop Color="{Binding PrimaryColor}" Offset="0.1" />
                                             <GradientStop Color="{Binding PrimaryDarkColor}" Offset="1.0" />
                                         </LinearGradientBrush>
-                                    </controls:CustomFrame.Background>
+                                    </Frame.Background>-->
 
                                     <StackLayout>
 
@@ -93,7 +94,7 @@
                                     
                                     
 
-                                </controls:CustomFrame>
+                                </Frame>
 
                                 <Label Text="Options" FontSize="Medium" FontAttributes="Bold" TextColor="{StaticResource primary_text}" Margin="15,15,0,0" />
 

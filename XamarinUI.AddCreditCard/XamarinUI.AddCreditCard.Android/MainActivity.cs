@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Xamarin.Forms.Platform.Android;
 
 namespace XamarinUI.AddCreditCard.Droid
 {
@@ -16,6 +17,8 @@ namespace XamarinUI.AddCreditCard.Droid
         {
             //TabLayoutResource = Resource.Layout.Tabbar;
             //ToolbarResource = Resource.Layout.Toolbar;
+
+            this.SetStatusBarColor(Xamarin.Forms.Color.FromHex("#ecf0f1").ToAndroid());
 
             base.OnCreate(savedInstanceState);
 
