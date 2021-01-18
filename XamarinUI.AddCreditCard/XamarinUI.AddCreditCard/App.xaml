@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="XamarinUI.AddCreditCard.App">
+    
     <Application.Resources>
         <Color x:Key="primary">#009688</Color>
         <Color x:Key="primary_dark">#00796B</Color>

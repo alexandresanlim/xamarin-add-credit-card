@@ -52,9 +52,14 @@
                                 <controls:CustomFrame
                                     Padding="20"
                                     CornerRadius="20"
-                                    BackgroundGradientStartColor="{Binding PrimaryColor}"
-                                    BackgroundGradientEndColor="{Binding PrimaryDarkColor}"
                                     >
+
+                                    <controls:CustomFrame.Background>
+                                        <LinearGradientBrush EndPoint="0,1">
+                                            <GradientStop Color="{Binding PrimaryColor}" Offset="0.1" />
+                                            <GradientStop Color="{Binding PrimaryDarkColor}" Offset="1.0" />
+                                        </LinearGradientBrush>
+                                    </controls:CustomFrame.Background>
 
                                     <StackLayout>
 
