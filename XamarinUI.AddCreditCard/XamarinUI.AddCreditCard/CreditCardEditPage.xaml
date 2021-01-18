@@ -32,10 +32,10 @@
                                 x:TypeArguments="Thickness">
                                 <On
                                     Platform="iOS"
-                                    Value="15,20,15,10" />
+                                    Value="15,5,15,0" />
                                 <On
                                     Platform="Android"
-                                    Value="15,10,15,10" />
+                                    Value="15,0,15,0" />
                             </OnPlatform>
                         </StackLayout.Padding>
                     
@@ -47,10 +47,10 @@
                     <Image>
                         <Image.Source>
                             <FontImageSource
-                                                Color="{DynamicResource primary}"
+                                                Color="{DynamicResource secondary_text}"
                                                 FontFamily="{DynamicResource FontAwesomeSolid}"
                                                 Size="Title"
-                                                Glyph="&#xf057;"
+                                                Glyph="&#xf00d;"
                                                 />
                         </Image.Source>
                     </Image>
@@ -59,14 +59,22 @@
 
             </StackLayout>
 
-            <controls:CustomFrame Grid.Row="1" Padding="50,0,50,30">
+            <controls:CustomFrame Grid.Row="1" Padding="50,0,50,15">
 
                 <StackLayout>
 
                     <flipper:ViewFlipper FlipState="{Binding CardSimulationInfo.FlipState}">
                         <flipper:ViewFlipper.FrontView>
                             <!--FrontCard-->
-                            <controls:CustomFrame HeightRequest="180" Padding="10" BackgroundColor="{StaticResource accent}" CornerRadius="20">
+                            <Frame HeightRequest="180" Padding="10" CornerRadius="20">
+
+                                <Frame.Background>
+                                    <LinearGradientBrush EndPoint="0,1">
+                                        <GradientStop Color="Purple" Offset="0.1" />
+                                        <GradientStop Color="Blue" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Frame.Background>
+
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*"/>
@@ -105,11 +113,18 @@
 
                                 </Grid>
 
-                            </controls:CustomFrame>
+                            </Frame>
                         </flipper:ViewFlipper.FrontView>
                         <flipper:ViewFlipper.BackView>
                             <!--BackCard-->
-                            <controls:CustomFrame HeightRequest="180" Padding="0,10" BackgroundColor="{StaticResource accent}" CornerRadius="20">
+                            <Frame HeightRequest="180" Padding="0,10" CornerRadius="20">
+                                <Frame.Background>
+                                    <LinearGradientBrush EndPoint="0,1">
+                                        <GradientStop Color="Purple" Offset="0.1" />
+                                        <GradientStop Color="Blue" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Frame.Background>
+                                
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*"/>
@@ -135,7 +150,7 @@
 
                                 </Grid>
 
-                            </controls:CustomFrame>
+                            </Frame>
                         </flipper:ViewFlipper.BackView>
                     </flipper:ViewFlipper>
 
@@ -187,7 +202,7 @@
                     <Label IsVisible="{Binding Cvv.ErrorMsg.IsVisible}" Text="{Binding Cvv.ErrorMsg.Text}" TextColor="Red"/>
                 </StackLayout>
 
-                <controls:CustomFrame CornerRadius="20,0,20,20" BackgroundColor="{StaticResource accent}" Padding="50,10" HorizontalOptions="End" Margin="0,5,0,0">
+                <controls:CustomFrame CornerRadius="20,0,20,20" BackgroundColor="{StaticResource accent}" Padding="50,10" HorizontalOptions="End">
                     <controls:CustomFrame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NextCommand}"/>
                     </controls:CustomFrame.GestureRecognizers>
