@@ -17,17 +17,15 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <Grid RowSpacing="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
 
-            <StackLayout Grid.Row="0">
+        <ScrollView Grid.Row="0">
 
-                <StackLayout HorizontalOptions="Start">
-                    <StackLayout.Padding>
+            <Grid Grid.Row="0" RowDefinitions="auto, auto, auto, auto, *" HorizontalOptions="FillAndExpand">
+
+                <StackLayout Grid.Row="0">
+
+                    <StackLayout HorizontalOptions="Start">
+                        <StackLayout.Padding>
                             <OnPlatform
                                 x:TypeArguments="Thickness">
                                 <On
@@ -38,182 +36,183 @@
                                     Value="15,0,15,0" />
                             </OnPlatform>
                         </StackLayout.Padding>
-                    
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding CloseModalCommand}"/>
-                    </StackLayout.GestureRecognizers>
-                    
 
-                    <Image>
-                        <Image.Source>
-                            <FontImageSource
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CloseModalCommand}"/>
+                        </StackLayout.GestureRecognizers>
+
+
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource
                                                 Color="{DynamicResource secondary_text}"
                                                 FontFamily="{DynamicResource FontAwesomeSolid}"
                                                 Size="Title"
                                                 Glyph="&#xf00d;"
                                                 />
-                        </Image.Source>
-                    </Image>
+                            </Image.Source>
+                        </Image>
+
+                    </StackLayout>
 
                 </StackLayout>
 
-            </StackLayout>
+                <controls:CustomFrame Grid.Row="1" Padding="50,0,50,15">
 
-            <controls:CustomFrame Grid.Row="1" Padding="50,0,50,15">
+                    <StackLayout>
 
-                <StackLayout>
+                        <flipper:ViewFlipper FlipState="{Binding CardSimulationInfo.FlipState}">
+                            <flipper:ViewFlipper.FrontView>
+                                <!--FrontCard-->
+                                <Frame HeightRequest="180" Padding="10" CornerRadius="20">
 
-                    <flipper:ViewFlipper FlipState="{Binding CardSimulationInfo.FlipState}">
-                        <flipper:ViewFlipper.FrontView>
-                            <!--FrontCard-->
-                            <Frame HeightRequest="180" Padding="10" CornerRadius="20">
+                                    <Frame.Background>
+                                        <LinearGradientBrush EndPoint="0,1">
+                                            <GradientStop Color="Purple" Offset="0.1" />
+                                            <GradientStop Color="Blue" Offset="1.0" />
+                                        </LinearGradientBrush>
+                                    </Frame.Background>
 
-                                <Frame.Background>
-                                    <LinearGradientBrush EndPoint="0,1">
-                                        <GradientStop Color="Purple" Offset="0.1" />
-                                        <GradientStop Color="Blue" Offset="1.0" />
-                                    </LinearGradientBrush>
-                                </Frame.Background>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
 
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
+                                        <Image x:Name="imgLogoCard" Grid.Row="0" HorizontalOptions="End" Source="{Binding LogoCreditCard.Source}" PropertyChanged="Image_PropertyChanged" Margin="0,0,15,0"/>
 
-                                    <Image x:Name="imgLogoCard" Grid.Row="0" HorizontalOptions="End" Source="{Binding LogoCreditCard.Source}" PropertyChanged="Image_PropertyChanged" Margin="0,0,15,0"/>
-
-                                    <StackLayout Grid.Row="1">
-                                        <Frame Padding="10" Margin="5" BorderColor="{Binding Number.BorderSpot.BorderColor}" BackgroundColor="Transparent" CornerRadius="15" HasShadow="False">
-                                            <Label x:Name="lbNumberValue" Text="XXXX XXXX XXXX XXXX" FontSize="Medium" TextColor="{StaticResource placeholder_value}"/>
-                                        </Frame>
-                                        <Grid ColumnSpacing="0">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="auto"/>
-                                            </Grid.ColumnDefinitions>
-
-                                            <!--Name-->
-                                            <StackLayout Grid.Column="0" Spacing="0">
-                                                <Label Margin="15,0,0,0" Text="CARD HOLDER NAME" TextColor="{StaticResource icons}" FontSize="Micro" FontAttributes="Bold"/>
-                                                <Frame Padding="10" Margin="5,0,0,15" BorderColor="{Binding Name.BorderSpot.BorderColor}" BackgroundColor="Transparent" CornerRadius="15" HasShadow="False">
-                                                    <Label x:Name="lbNameValue" Text="NAME SURNAME" FontSize="Small" TextColor="{StaticResource placeholder_value}"/>
-                                                </Frame>
-                                            </StackLayout>
-
-                                            <!--Validated-->
-                                            <StackLayout Grid.Column="1" Spacing="0">
-                                                <Label Margin="0,0,15,0" Text="VALID THRU" TextColor="{StaticResource icons}" HorizontalOptions="End" FontSize="Micro" FontAttributes="Bold"/>
-                                                <Frame Padding="10" Margin="0,0,5,15" BorderColor="{Binding Valid.BorderSpot.BorderColor}" BackgroundColor="Transparent" CornerRadius="15" HasShadow="False">
-                                                    <Label x:Name="lbValidValue" Text="MM/YY" FontSize="Small" TextColor="{StaticResource placeholder_value}" HorizontalOptions="End"/>
-                                                </Frame>
-                                            </StackLayout>
-                                        </Grid>
-                                    </StackLayout>
-
-                                </Grid>
-
-                            </Frame>
-                        </flipper:ViewFlipper.FrontView>
-                        <flipper:ViewFlipper.BackView>
-                            <!--BackCard-->
-                            <Frame HeightRequest="180" Padding="0,10" CornerRadius="20">
-                                <Frame.Background>
-                                    <LinearGradientBrush EndPoint="0,1">
-                                        <GradientStop Color="Purple" Offset="0.1" />
-                                        <GradientStop Color="Blue" Offset="1.0" />
-                                    </LinearGradientBrush>
-                                </Frame.Background>
-                                
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-
-                                    <StackLayout Grid.Row="0" Spacing="15">
-                                        <StackLayout BackgroundColor="Black" HeightRequest="50" Margin="0,10,0,0"/>
-                                        <Grid ColumnSpacing="0">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="0.5*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Label Grid.Column="0" Margin="15,0,0,0" Text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" MaxLines="3" TextColor="{StaticResource icons}"/>
-                                            <Frame Grid.Column="1" Padding="10" BorderColor="{Binding Cvv.BorderSpot.BorderColor}" BackgroundColor="Transparent" CornerRadius="15" Margin="0,0,10,0" HasShadow="False">
-                                                <StackLayout Padding="10" BackgroundColor="WhiteSmoke">
-                                                    <Label x:Name="lbCvvValue" Text="CVV" FontSize="Small" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                                                </StackLayout>
+                                        <StackLayout Grid.Row="1">
+                                            <Frame Padding="10" Margin="5" BorderColor="{Binding Number.BorderSpot.BorderColor}" BackgroundColor="Transparent" CornerRadius="15" HasShadow="False">
+                                                <Label x:Name="lbNumberValue" Text="XXXX XXXX XXXX XXXX" FontSize="Medium" TextColor="{StaticResource placeholder_value}"/>
                                             </Frame>
-                                        </Grid>
-                                    </StackLayout>
-                                    <Image Grid.Row="1" HorizontalOptions="End" Source="{Binding LogoCreditCard.Source}" Margin="0,0,15,0"/>
+                                            <Grid ColumnSpacing="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="auto"/>
+                                                </Grid.ColumnDefinitions>
 
-                                </Grid>
+                                                <!--Name-->
+                                                <StackLayout Grid.Column="0" Spacing="0">
+                                                    <Label Margin="15,0,0,0" Text="CARD HOLDER NAME" TextColor="{StaticResource icons}" FontSize="Micro" FontAttributes="Bold"/>
+                                                    <Frame Padding="10" Margin="5,0,0,15" BorderColor="{Binding Name.BorderSpot.BorderColor}" BackgroundColor="Transparent" CornerRadius="15" HasShadow="False">
+                                                        <Label x:Name="lbNameValue" Text="NAME SURNAME" FontSize="Small" TextColor="{StaticResource placeholder_value}"/>
+                                                    </Frame>
+                                                </StackLayout>
 
-                            </Frame>
-                        </flipper:ViewFlipper.BackView>
-                    </flipper:ViewFlipper>
+                                                <!--Validated-->
+                                                <StackLayout Grid.Column="1" Spacing="0">
+                                                    <Label Margin="0,0,15,0" Text="VALID THRU" TextColor="{StaticResource icons}" HorizontalOptions="End" FontSize="Micro" FontAttributes="Bold"/>
+                                                    <Frame Padding="10" Margin="0,0,5,15" BorderColor="{Binding Valid.BorderSpot.BorderColor}" BackgroundColor="Transparent" CornerRadius="15" HasShadow="False">
+                                                        <Label x:Name="lbValidValue" Text="MM/YY" FontSize="Small" TextColor="{StaticResource placeholder_value}" HorizontalOptions="End"/>
+                                                    </Frame>
+                                                </StackLayout>
+                                            </Grid>
+                                        </StackLayout>
 
-                </StackLayout>
+                                    </Grid>
 
+                                </Frame>
+                            </flipper:ViewFlipper.FrontView>
+                            <flipper:ViewFlipper.BackView>
+                                <!--BackCard-->
+                                <Frame HeightRequest="180" Padding="0,10" CornerRadius="20">
+                                    <Frame.Background>
+                                        <LinearGradientBrush EndPoint="0,1">
+                                            <GradientStop Color="Purple" Offset="0.1" />
+                                            <GradientStop Color="Blue" Offset="1.0" />
+                                        </LinearGradientBrush>
+                                    </Frame.Background>
 
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
 
+                                        <StackLayout Grid.Row="0" Spacing="15">
+                                            <StackLayout BackgroundColor="Black" HeightRequest="50" Margin="0,10,0,0"/>
+                                            <Grid ColumnSpacing="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="0.5*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" Margin="15,0,0,0" Text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" MaxLines="3" TextColor="{StaticResource icons}"/>
+                                                <Frame Grid.Column="1" Padding="10" BorderColor="{Binding Cvv.BorderSpot.BorderColor}" BackgroundColor="Transparent" CornerRadius="15" Margin="0,0,10,0" HasShadow="False">
+                                                    <StackLayout Padding="10" BackgroundColor="WhiteSmoke">
+                                                        <Label x:Name="lbCvvValue" Text="CVV" FontSize="Small" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                                    </StackLayout>
+                                                </Frame>
+                                            </Grid>
+                                        </StackLayout>
+                                        <Image Grid.Row="1" HorizontalOptions="End" Source="{Binding LogoCreditCard.Source}" Margin="0,0,15,0"/>
 
+                                    </Grid>
 
+                                </Frame>
+                            </flipper:ViewFlipper.BackView>
+                        </flipper:ViewFlipper>
 
-            </controls:CustomFrame>
+                    </StackLayout>
 
-            <StackLayout Grid.Row="2" Padding="15,0" Spacing="0">
-                <Label Text="Type in your card details: " FontAttributes="Bold" FontSize="Title" TextColor="{StaticResource primary_text}" Margin="0,10"/>
-
-                <!--Card Number-->
-                <StackLayout IsVisible="{Binding Number.Panel.IsVisible}" PropertyChanged="StackLayout_PropertyChanged" Spacing="0">
-                    <Label Text="Card Number" TextColor="{StaticResource secondary_text}"/>
-                    <Entry x:Name="entryNumber" Text="{Binding Number.Entry.Text}" Keyboard="Numeric" TextChanged="Entry_TextChanged" FontSize="Title" ReturnType="Next" ReturnCommand="{Binding NextCommand}">
-                        <Entry.Behaviors>
-                            <behavior:MaskedBehavior Mask="XXXX XXXX XXXX XXXX" />
-                        </Entry.Behaviors>
-                    </Entry>
-                    <Label IsVisible="{Binding Number.ErrorMsg.IsVisible}" Text="{Binding Number.ErrorMsg.Text}" TextColor="Red"/>
-                </StackLayout>
-
-                <!--Card Holder Name-->
-                <StackLayout IsVisible="{Binding Name.Panel.IsVisible}" PropertyChanged="StackLayout_PropertyChanged_1" Spacing="0">
-                    <Label Text="Card Holder Name" TextColor="{StaticResource secondary_text}"/>
-                    <Entry x:Name="entryName" Text="{Binding Name.Entry.Text}" FontSize="Title" TextChanged="Entry_TextChanged_1" MaxLength="18" ReturnType="Next" ReturnCommand="{Binding NextCommand}" />
-                    <Label IsVisible="{Binding Name.ErrorMsg.IsVisible}" Text="{Binding Name.ErrorMsg.Text}" TextColor="Red"/>
-                </StackLayout>
-
-                <!--Valid-->
-                <StackLayout IsVisible="{Binding Valid.Panel.IsVisible}" PropertyChanged="StackLayout_PropertyChanged_2" Spacing="0">
-                    <Label Text="Valid Thru" TextColor="{StaticResource secondary_text}"/>
-                    <Entry x:Name="entryValid" Text="{Binding Valid.Entry.Text}" Keyboard="Numeric" FontSize="Title" TextChanged="Entry_TextChanged_2" ReturnType="Next" ReturnCommand="{Binding NextCommand}">
-                        <Entry.Behaviors>
-                            <behavior:MaskedBehavior Mask="XX/XX" />
-                        </Entry.Behaviors>
-                    </Entry>
-                    <Label IsVisible="{Binding Valid.ErrorMsg.IsVisible}" Text="{Binding Valid.ErrorMsg.Text}" TextColor="Red"/>
-                </StackLayout>
-
-                <!--CCV-->
-                <StackLayout IsVisible="{Binding Cvv.Panel.IsVisible}" PropertyChanged="StackLayout_PropertyChanged_3" Spacing="0">
-                    <Label Text="CVV" TextColor="{StaticResource secondary_text}"/>
-                    <Entry x:Name="entryCvv" Text="{Binding Cvv.Entry.Text}" Keyboard="Numeric" FontSize="Title" TextChanged="Entry_TextChanged_3" MaxLength="4" ReturnType="Next" ReturnCommand="{Binding NextCommand}" />
-                    <Label IsVisible="{Binding Cvv.ErrorMsg.IsVisible}" Text="{Binding Cvv.ErrorMsg.Text}" TextColor="Red"/>
-                </StackLayout>
-
-                <controls:CustomFrame CornerRadius="20,0,20,20" BackgroundColor="{StaticResource accent}" Padding="50,10" HorizontalOptions="End">
-                    <controls:CustomFrame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NextCommand}"/>
-                    </controls:CustomFrame.GestureRecognizers>
-                    <Label Text="{Binding ButtonText.Text}" FontAttributes="Bold" FontSize="Medium" TextColor="{StaticResource icons}" HorizontalOptions="Center" />
                 </controls:CustomFrame>
 
+                <Label Text="Type in your card details: " Grid.Row="2" FontAttributes="Bold" FontSize="Title" TextColor="{StaticResource primary_text}" Margin="15,0,0,0"/>
+
+                <Grid ColumnDefinitions="*, auto" Grid.Row="3" Padding="15,0">
 
 
-            </StackLayout>
+                    <StackLayout Grid.Column="0">
+                        <!--Card Number-->
+                        <StackLayout IsVisible="{Binding Number.Panel.IsVisible}" PropertyChanged="StackLayout_PropertyChanged" Spacing="0">
+                            <Label Text="Card Number" TextColor="{StaticResource secondary_text}"/>
+                            <Entry x:Name="entryNumber" Text="{Binding Number.Entry.Text}" Keyboard="Numeric" TextChanged="Entry_TextChanged" FontSize="Title" ReturnType="Next" ReturnCommand="{Binding NextCommand}">
+                                <Entry.Behaviors>
+                                    <behavior:MaskedBehavior Mask="XXXX XXXX XXXX XXXX" />
+                                </Entry.Behaviors>
+                            </Entry>
+                            <Label IsVisible="{Binding Number.ErrorMsg.IsVisible}" Text="{Binding Number.ErrorMsg.Text}" TextColor="Red"/>
+                        </StackLayout>
 
-        </Grid>
+                        <!--Card Holder Name-->
+                        <StackLayout IsVisible="{Binding Name.Panel.IsVisible}" PropertyChanged="StackLayout_PropertyChanged_1" Spacing="0">
+                            <Label Text="Card Holder Name" TextColor="{StaticResource secondary_text}"/>
+                            <Entry x:Name="entryName" Text="{Binding Name.Entry.Text}" FontSize="Title" TextChanged="Entry_TextChanged_1" MaxLength="18" ReturnType="Next" ReturnCommand="{Binding NextCommand}" />
+                            <Label IsVisible="{Binding Name.ErrorMsg.IsVisible}" Text="{Binding Name.ErrorMsg.Text}" TextColor="Red"/>
+                        </StackLayout>
+
+                        <!--Valid-->
+                        <StackLayout IsVisible="{Binding Valid.Panel.IsVisible}" PropertyChanged="StackLayout_PropertyChanged_2" Spacing="0">
+                            <Label Text="Valid Thru" TextColor="{StaticResource secondary_text}"/>
+                            <Entry x:Name="entryValid" Text="{Binding Valid.Entry.Text}" Keyboard="Numeric" FontSize="Title" TextChanged="Entry_TextChanged_2" ReturnType="Next" ReturnCommand="{Binding NextCommand}">
+                                <Entry.Behaviors>
+                                    <behavior:MaskedBehavior Mask="XX/XX" />
+                                </Entry.Behaviors>
+                            </Entry>
+                            <Label IsVisible="{Binding Valid.ErrorMsg.IsVisible}" Text="{Binding Valid.ErrorMsg.Text}" TextColor="Red"/>
+                        </StackLayout>
+
+                        <!--CCV-->
+                        <StackLayout IsVisible="{Binding Cvv.Panel.IsVisible}" PropertyChanged="StackLayout_PropertyChanged_3" Spacing="0">
+                            <Label Text="CVV" TextColor="{StaticResource secondary_text}"/>
+                            <Entry x:Name="entryCvv" Text="{Binding Cvv.Entry.Text}" Keyboard="Numeric" FontSize="Title" TextChanged="Entry_TextChanged_3" MaxLength="4" ReturnType="Next" ReturnCommand="{Binding NextCommand}" />
+                            <Label IsVisible="{Binding Cvv.ErrorMsg.IsVisible}" Text="{Binding Cvv.ErrorMsg.Text}" TextColor="Red"/>
+                        </StackLayout>
+                    </StackLayout>
+
+
+                    <controls:CustomFrame Grid.Column="1" CornerRadius="20,0,20,20" BackgroundColor="{StaticResource accent}" Padding="25,10" VerticalOptions="Center">
+                        <controls:CustomFrame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NextCommand}"/>
+                        </controls:CustomFrame.GestureRecognizers>
+                        <Label Text="{Binding ButtonText.Text}" FontAttributes="Bold" FontSize="Medium" TextColor="{StaticResource icons}" HorizontalOptions="Center" />
+                    </controls:CustomFrame>
+
+
+                </Grid>
+
+            </Grid>
+
+        </ScrollView>
 
     </ContentPage.Content>
 
